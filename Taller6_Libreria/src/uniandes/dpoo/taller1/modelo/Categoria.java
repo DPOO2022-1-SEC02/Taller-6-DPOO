@@ -78,6 +78,15 @@ public class Categoria
 	// Otros métodos
 	// ************************************************************************
 
+	
+	
+	public void renombrar (String nuevoNombre)
+	{
+		this.nombre = nuevoNombre;
+	}
+	
+	
+	
 	/**
 	 * Agrega un nuevo libro a la categoría
 	 * 

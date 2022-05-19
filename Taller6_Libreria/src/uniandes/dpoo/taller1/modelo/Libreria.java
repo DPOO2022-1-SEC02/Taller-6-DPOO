@@ -227,6 +227,29 @@ public class Libreria
 		return libros;
 	}
 
+	
+	public void renombrarCategoria (String viejo, String nuevo) throws Exception
+	{
+		Categoria laCategoria = null;
+		
+		for (int i = 0; i < categorias.length && laCategoria == null; i++)
+		{
+			if (categorias[i].darNombre().equals(viejo))
+			laCategoria = categorias[i];
+			
+			if (categorias[i].darNombre().equals(nuevo))
+				throw new Exception ("Nombre de la categoria ya existe");
+		}
+		
+		if (laCategoria == null) {
+			throw new Exception ("La categoria no existe");
+		}
+		else {
+			laCategoria.renombrar(nuevo);
+		}	
+	}
+	
+	
 	/**
 	 * Busca una categoría a partir de su nombre
 	 * 
@@ -236,15 +259,21 @@ public class Libreria
 	public Categoria buscarCategoria(String nombreCategoria) throws Exception
 	{
 		Categoria laCategoria = null;
+		
 		for (int i = 0; i < categorias.length && laCategoria == null; i++)
 		{
 			if (categorias[i].darNombre().equals(nombreCategoria))
-				laCategoria = categorias[i];
+			laCategoria = categorias[i];
 		}
-		if (laCategoria == null) {
+		
+		if (laCategoria == null)
+		{
+			
 			throw new Exception ("No se encontró la categoría del libro");
 		}
+			
 		return laCategoria;
+		
 	}
 
 	/**
@@ -481,5 +510,6 @@ public class Libreria
 
 		return hayAutorEnVariasCategorias;
 	}
+	
 
 }
